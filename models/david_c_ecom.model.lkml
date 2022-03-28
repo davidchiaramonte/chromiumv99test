@@ -1,4 +1,6 @@
 connection: "thelook"
+#include: "/dashboards/*.dashboard"
+#include: "/*.dashboard"
 
 # include all the views
 include: "/views/**/*.view"
