@@ -7,6 +7,10 @@ view: orders {
     type: number
     sql: ${TABLE}.id ;;
   }
+  dimension: sample {
+    type: string
+    sql: UPPER(RIGHT(${TABLE}.status,3)) ;;
+  }
 
   dimension_group: created {
     type: time
