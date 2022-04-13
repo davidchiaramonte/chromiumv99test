@@ -1,4 +1,7 @@
+include: "/views/order_items.view.lkml"
+include: "/views/orders.view.lkml"
 view: events {
+  extends: [order_items, orders ]
   sql_table_name: demo_db.events ;;
   drill_fields: [id]
 
