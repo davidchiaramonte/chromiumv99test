@@ -4,6 +4,7 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/testdb.dashboard.lookml"
 
 datagroup: david_c_ecom_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
