@@ -38,6 +38,38 @@ view: products {
     sql: ${TABLE}.retail_price ;;
   }
 
+  # measure: usd {
+  #   #hidden: yes
+  #   type: average
+  #   sql: ${retail_price} ;;
+  #   value_format:"$0"
+  # }
+  # measure: eur {
+  #   #hidden: yes
+  #   type: average
+  #   sql: ${retail_price} ;;
+  #   value_format: "€0"
+  # }
+  measure: value_dec {
+    hidden: yes
+    type: average
+    sql: ${retail_price} ;;
+    value_format_name: decimal_0
+  }
+  measure: jtest {
+    type: average
+    sql: ${retail_price} ;;
+    html: {% if category._value contains 'Socks' %}
+    ${{rendered_value}}
+    {% elsif category._value contains 'Suits' %}
+    €{{rendered_value}}
+    {% else %}
+    {{value_dec._rendered_value}}
+    {% endif %};;
+  }
+
+
+
   dimension: sku {
     type: string
     sql: ${TABLE}.sku ;;

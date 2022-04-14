@@ -4,6 +4,7 @@ view: sindhu {
   dimension: balance {
     type: number
     sql: ${TABLE}.balance ;;
+    drill_fields: [time_ref]
   }
 
   dimension: balance_lag {
@@ -25,9 +26,18 @@ view: sindhu {
       week,
       month,
       quarter,
-      year
+      year,
+      second
     ]
     sql: ${TABLE}.funding_time ;;
+  }
+
+  dimension: time_ref {
+    # datatype: timestamp
+    datatype: timestamp
+    type: date_time
+    sql: CAST(${TABLE}.funding_time as DATETIME) ;;
+    html: {{rendered_value | date:"%m/%d/%Y %H:%M"}} ;;
   }
 
   dimension: p_key {
@@ -62,6 +72,16 @@ view: sindhu {
   dimension: spotme_purchase_amount {
     type: number
     sql: ${TABLE}.spotme_purchase_amount ;;
+    link: {
+      label: "linking"
+      url: "{{count._link}}"
+    }
+
+    # link: {
+    #   label: "linking"
+    #   url: "{{count._link}}"
+    # }
+
   }
 
   dimension: user_id {
@@ -74,4 +94,11 @@ view: sindhu {
     type: count
     drill_fields: [users.id, users.first_name, users.last_name]
   }
+
+  measure: dummy {
+    type: sum
+    sql: 0;;
+    drill_fields: [users.id, users.first_name, users.last_name]
+  }
+
 }

@@ -57,6 +57,7 @@ view: orders {
 
   measure: count {
     type: count
+    filters: [created_date: "before tomorrow"]
     drill_fields: [detail*]
   }
 
