@@ -33,6 +33,13 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: html_legend {
+    type: string
+    html: <font size=4px>{{ value }}</font>;;
+    sql: ${TABLE}.status ;;
+
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
