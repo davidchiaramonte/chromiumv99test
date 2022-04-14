@@ -7,6 +7,12 @@ view: orders {
     type: number
     sql: ${TABLE}.id ;;
   }
+  dimension: sample {
+    type: string
+    sql: UPPER(RIGHT(${TABLE}.status,3)) ;;
+  }
+
+
 
   dimension_group: created {
     type: time
@@ -33,16 +39,62 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+
   dimension: html_legend {
     type: string
     html: <font size=4px>{{ value }}</font>;;
     sql: ${TABLE}.status ;;
+  }
+
+  parameter: dynamic_measure_selector {
+    type: unquoted
+    allowed_value: {
+      label: "Sum"
+      value: "sum"
+    }
+    allowed_value: {
+      label: "Average"
+      value: "average"
+    }
+    allowed_value: {
+      label: "Count"
+      value: "count"
+    }
 
   }
 
   measure: count {
     type: count
+    filters: [created_date: "before tomorrow"]
     drill_fields: [detail*]
+  }
+
+  measure: sum {
+    type: sum
+    sql: ${user_id} ;;
+  }
+
+  measure: average {
+    type: average
+    sql: ${user_id} ;;
+  }
+
+  measure: dynamic_measure {
+    type: number
+    description: "Must be used with KPI Selector from Custom Filters. Defaults to Net Sales"
+    group_label: "KPI"
+    group_item_label: "KPI - CP"
+    value_format_name: decimal_0
+    # label: "{% if dynamic_measure_selector._parameter_value == 'count' %}Count
+    # {% elsif dynamic_measure_selector._parameter_value == 'average' %}Average
+    # {% elsif dynamic_measure_selector._parameter_value == 'sum' %}Sum
+    # {% endif %}"
+    label_from_parameter: dynamic_measure_selector
+    sql:
+    {% if dynamic_measure_selector._parameter_value == 'count' %} ${count}
+    {% elsif dynamic_measure_selector._parameter_value == 'sum' %} ${sum}
+    {% elsif dynamic_measure_selector._parameter_value == 'average' %} ${average}
+    {% endif %};;
   }
 
   # ----- Sets of fields for drilling ------

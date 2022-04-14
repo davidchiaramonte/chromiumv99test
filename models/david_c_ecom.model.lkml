@@ -1,7 +1,10 @@
 connection: "thelook"
+#include: "/dashboards/*.dashboard"
+#include: "/*.dashboard"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/testdb.dashboard.lookml"
 
 datagroup: david_c_ecom_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -215,3 +218,9 @@ explore: xss_test_7 {}
 explore: xss_test_8 {}
 
 explore: xss_test_9 {}
+
+# Bug test: Expand tables down render html and value format currently https://gcpm224.cloud.looker.com/dashboards/81
+named_value_format: percent_format_1 {
+  value_format:
+  "+0.0%;-0.0%"
+}
