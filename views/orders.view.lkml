@@ -39,6 +39,13 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+
+  dimension: html_legend {
+    type: string
+    html: <font size=4px>{{ value }}</font>;;
+    sql: ${TABLE}.status ;;
+  }
+
   parameter: dynamic_measure_selector {
     type: unquoted
     allowed_value: {
@@ -53,6 +60,7 @@ view: orders {
       label: "Count"
       value: "count"
     }
+
   }
 
   measure: count {
