@@ -47,7 +47,7 @@ view: order_items {
     description: "Sales amount evolution in value without VAT between current and previous period expressed in percent"
     type:number
     # sql:1.0*(${sales_amount_wo_vat_eur_current_period}-${sales_amount_wo_vat_eur_previous_period})/nullif(${sales_amount_wo_vat_eur_previous_period},0);;
-    sql: ${TABLE}.sale_price ;;
+    sql: ${TABLE}.sale_price/950 ;;
 
     html: @{evol_color} ;;
     value_format_name: percent_format_1
