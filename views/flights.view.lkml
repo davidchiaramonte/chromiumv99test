@@ -119,7 +119,7 @@ view: flights {
   measure: avg_time_between_dynamic_timestamps_mins_2 {
 
     group_label: " Dynamic Timestamps"
-    group_item_label: "Avg Mins Between"
+    group_item_label: "Avg Mins Between2"
     label: "Avg Mins Between"
     description: "The average time between two timestamps, in minutes, you have chosen in the dynamic timestap filter parameters"
     type: average
@@ -132,7 +132,7 @@ view: flights {
     view_label: "Timestamps"
 
     group_item_label: "Avg Mins Between"
-    label: "Avg Mins Between"
+    label: "Avg Mins Between3"
     description: "The average time between two timestamps, in minutes, you have chosen in the dynamic timestap filter parameters"
     type: average
     sql: ${distance} ;;
@@ -144,7 +144,7 @@ view: flights {
     view_label: "Timestamps"
     group_label: " Dynamic Timestamps"
 
-    label: "Avg Mins Between"
+    label: "Avg Mins Between4"
     description: "The average time between two timestamps, in minutes, you have chosen in the dynamic timestap filter parameters"
     type: average
     sql: ${distance} ;;
@@ -168,7 +168,7 @@ view: flights {
     view_label: "Timestamps"
     group_label: " Dynamic Timestamps"
     group_item_label: "Avg Mins Between"
-    label: "Avg Mins Between"
+    label: "Avg Mins Between6"
 
     type: average
     sql: ${distance} ;;
