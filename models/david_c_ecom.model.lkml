@@ -172,7 +172,9 @@ explore: ten_million_orders {
   }
 }
 
-explore: test {}
+explore: test {
+label: "@{table_name}"
+}
 
 explore: users {}
 

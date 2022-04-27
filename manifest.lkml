@@ -19,3 +19,7 @@ constant: evol_color {
   {{ rendered_value }}<font color= \"black\"> &#8674;</font>
   {% endif %}"
 }
+
+constant: table_name {
+  value: "users"
+}
