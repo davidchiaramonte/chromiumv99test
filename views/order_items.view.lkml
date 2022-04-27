@@ -63,5 +63,8 @@ view: order_items {
     sql: ${sale_price} ;;
     value_format: "€#,###.00;(€#,###.00)"
   }
-
+  measure: measure_sum {
+    type: number
+    sql: ${sale_price}+${count}+${evol_sales_amount_wo_vat_eur} ;;
+  }
 }
