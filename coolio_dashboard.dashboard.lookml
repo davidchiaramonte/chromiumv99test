@@ -8,7 +8,7 @@
     name: Coolio Dashboard
     model: david_c_ecom
     explore: order_items
-    type: table
+    type: looker_grid
     fields: [order_items.total_sale_price]
     limit: 500
     listen:
