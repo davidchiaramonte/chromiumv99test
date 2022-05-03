@@ -9,7 +9,7 @@
     model: david_c_ecom
     explore: order_items
     type: table
-    fields: [orders.count]
+    fields: [order_items.total_sale_price]
     limit: 500
     listen:
       Status: orders.status
