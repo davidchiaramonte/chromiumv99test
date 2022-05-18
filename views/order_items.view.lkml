@@ -83,7 +83,7 @@ view: order_items {
     type: date_time
     sql:
     CASE
-    WHEN {% parameter timeframe_picker %} = 'Hour' THEN to_timestamp(${returned_hour})
+    WHEN {% parameter timeframe_picker %} = 'Hour' THEN ${returned_hour}
     WHEN {% parameter timeframe_picker %} = 'Date' THEN to_timestamp(${returned_date})
     WHEN {% parameter timeframe_picker %} = 'Week' THEN to_timestamp(${returned_week})
     WHEN {% parameter timeframe_picker %} = 'Month' THEN to_timestamp(${returned_month})
