@@ -27,6 +27,11 @@ view: orders {
     ]
     sql: ${TABLE}.created_at ;;
   }
+  dimension: date_of_birth_dash {
+    sql: ${created_date} ;;
+    html: {{rendered_value | date: "%m/%d/%Y"}} ;;
+  }
+
 
   dimension: status {
     type: string
