@@ -47,6 +47,11 @@ view: inventory_items {
     sql: ${TABLE}.sold_at ;;
   }
 
+  dimension: is_last_day_of_month {
+    type: yesno
+    sql: EXTRACT( day from DATEADD(day,1,${created_date}) ) = 1 ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, products.id, products.item_name, order_items.count]
